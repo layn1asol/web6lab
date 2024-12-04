@@ -33,5 +33,40 @@ document.addEventListener("DOMContentLoaded", function () {
         const bootstrapToast = new bootstrap.Toast(toast);
         bootstrapToast.show();
     });
+
+
+
+
+    form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const header = document.getElementById('toast-header').value;
+        const body = document.getElementById('toast-body').value;
+        const date = document.getElementById('toast-date').value;
+
+        const toastData = { header, body, date };
+
+        try {
+            const response = await fetch('save_toast.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(toastData),
+            });
+
+            const result = await response.json();
+            if (result.status === 'success') {
+                alert('Toast saved successfully!');
+            } else {
+                console.error(result.message);
+            }
+        } catch (error) {
+            console.error('Error saving toast:', error);
+        }
+    });
+
+
 });
+
+
+
 
