@@ -28,15 +28,10 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
         `;
 
-        // Append the toast to the container
         toastContainer.appendChild(toast);
 
-        // Initialize and show the toast
         const bootstrapToast = new bootstrap.Toast(toast);
         bootstrapToast.show();
-
-        // Clear the form fields
-        form.reset();
     });
 });
 
