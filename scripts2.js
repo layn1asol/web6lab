@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", async function () {
     const toastContainer = document.getElementById("toast-container");
 
-    // Function to fetch toast data from the JSON file
+    // fetch toast data from the JSON file
     async function fetchToasts() {
         try {
             const response = await fetch('toasts.json');
@@ -15,14 +15,14 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     }
 
-    // Function to display toasts in the toast-container div
+    // display toasts in the toast-container div
     function displayToasts(toasts) {
         if (toasts.length === 0) {
-            toastContainer.innerHTML = "<p>No toasts to display!</p>";
+            toastContainer.innerHTML = "<p style=\"color: white;\">No toasts to display!</p>";
             return;
         }
 
-        toastContainer.innerHTML = ""; // Clear container
+        toastContainer.innerHTML = ""; // clear container
         toasts.forEach(({ header, body, date }) => {
             const toast = document.createElement("div");
             toast.classList.add("toast", "me-2", "mb-2");
@@ -43,13 +43,12 @@ document.addEventListener("DOMContentLoaded", async function () {
 
             toastContainer.appendChild(toast);
 
-            // Use Bootstrap Toast functionality if required
+            // use bootstrap toast functionality if required
             const bootstrapToast = new bootstrap.Toast(toast);
             bootstrapToast.show();
         });
     }
 
-    // Fetch and display toasts when the page loads
     fetchToasts();
 });
 

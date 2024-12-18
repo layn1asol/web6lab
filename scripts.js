@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const toastContainer = document.getElementById('toast-container');
     const saveToastsButton = document.getElementById('save-toasts');
     const deleteToastsButton = document.getElementById('delete-toasts');
-    let toastsData = []; // Array to store all toasts
+    let toastsData = []; // array to store all toasts
 
     form.addEventListener('submit', function (e) {
         e.preventDefault();
@@ -12,10 +12,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const body = document.getElementById('toast-body').value;
         const date = document.getElementById('toast-date').value;
 
-        // Add new toast data to the array
+        // add new toast data to the array
         toastsData.push({ header, body, date });
 
-        // Create a new toast element
+        // create a new toast element
         const toast = document.createElement('div');
         toast.classList.add('toast', 'me-2', 'mb-2');
         toast.setAttribute('role', 'alert');
@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const result = await response.json();
             if (result.status === 'success') {
                 alert('All toasts deleted successfully!');
-                toastsData = []; // Clear the local array
+                toastsData = []; // clear the local array
             } else {
                 console.error(result.message);
             }
